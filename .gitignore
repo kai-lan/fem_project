@@ -2,3 +2,5 @@
 build/
 .DS_Store
 python/pyfem.cpython-39-darwin.so
+*/*.png
+*/*.gif

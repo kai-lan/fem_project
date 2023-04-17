@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.0)
 project (fem_project)
 
-set (CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 #set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
@@ -11,7 +11,9 @@ if(NOT Eigen3_FOUND)
     error("Eigen not found!")
 endif()
 
-add_library(libraries Simulation.hh Mesh.hh Mesh.cc Energy.hh Energy.cc FiniteDifference.hh) # SHARED or STATIC(default)
+# SHARED or STATIC(default)
+# If A.h and A.cc co-exist, only need to add A.cc
+add_library(libraries Simulation.hh Mesh.cc Energy.cc FiniteDifference.hh)
 target_link_libraries (libraries PUBLIC Eigen3::Eigen)
 
 add_executable (main main.cc)
